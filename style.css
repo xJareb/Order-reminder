@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.mobile-container{
+    width: 50vh;
+    height: 100vh;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+.title h1{
+    color: rgb(232, 234, 233);
+    text-align: center;
+    font-size: 43px;
+    padding-top: 30vh;
+}
+.sign{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 65px 10px 65px;
+    font-size: 20px;
+    background-color: #5F7ADB;
+    color: rgb(232, 234, 233);
+    border: 1px solid #a2b2ee;
+    margin-top: 25vh;
+    border-radius: 5%;
+}
+.register-sign{
+    color: #5F7ADB;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 15px;
+}
+.about-sign{
+    color: #5F7ADB;
+    position: absolute;
+    bottom: 0;
+    margin-left: calc(25vh - 29px);
+    margin-bottom: 5px;
+}
+.hide{
+    display: none;
+}
+.popUp-about{
+    width: 45vh;
+    height: 150px;
+    background-color: #a2b2ee;
+    border-radius: 5px;
+    position: fixed;
+    top: 45vh;
+    opacity: 0;
+}
+.popUp-about h3{
+    text-align: center;
+    padding-top: 10px;
+    color: rgb(232, 234, 233);
+}
+.popUp-about p{
+    text-align: center;
+    padding-top: 10px;
+    color: rgb(232, 234, 233);
+}
+.popUp-about button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 8px 30px 8px 30px;
+    background-color: #5F7ADB;
+    border: 1px solid rgb(232, 234, 233);
+    color: rgb(232, 234, 233);
+    
+}
+@media only screen and (max-width: 600px) {
+    .mobile-container{
+        width: 100%;
+    }
+    .about-sign{
+        margin-left: calc(50% - 29px);
+    }
+    .popUp-about{
+        width: 95%;
+    }
+  }
