@@ -14,15 +14,33 @@
         <div class="login-container">
             <button class="sign">Sign in</button>
             <p class="register-sign">No account? Sign up</p>
+            <div class="login-form" id="login-form">
+                <div class="login-title">
+                    <h2>Sign in</h2>
+                </div>
+                <span>Username</span>
+                <input type="text" name="username" id="name">
+                <span>Password</span>
+                <input type="text" name="password" id="password">
+                <div class="show">
+                    <input type="checkbox" name="show" id="show">
+                    <span>Show password</span>
+                </div>
+                <button class="button" id="sign-in">Sign in</button>
+                <div class="close">
+                    <p>X</p>
+                </div>
+            </div>
         </div>
         <div class="about-container">
             <p class="about-sign" id="popup-about">About us</p>
             <div class="popUp-about">
                 <h3 class="hide">Have issues with remembering orders?</h3>
                 <p class="hide">Order reminder is an application that allows you to create orders by tables in a few clicks instead of writing orders on notebook</p>
-                <button>Close</button>
+                <button class="button">Close</button>
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -44,6 +44,9 @@ body,html{
     margin-left: calc(25vh - 29px);
     margin-bottom: 5px;
 }
+.fadeEffect{
+    transition: opacity 1s ease-in-out;
+}
 .hide{
     display: none;
 }
@@ -55,6 +58,7 @@ body,html{
     position: fixed;
     top: 45vh;
     opacity: 0;
+    display: none;
 }
 .popUp-about h3{
     text-align: center;
@@ -66,7 +70,7 @@ body,html{
     padding-top: 10px;
     color: rgb(232, 234, 233);
 }
-.popUp-about button{
+.button{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -75,7 +79,57 @@ body,html{
     background-color: #5F7ADB;
     border: 1px solid rgb(232, 234, 233);
     color: rgb(232, 234, 233);
-    
+}
+.login-form{
+    width: 45vh;
+    height: 210px;
+    background-color: #a2b2ee;
+    position: fixed;
+    top: 45vh;
+    display: none;
+}
+.login-title{
+    text-align: center;
+    padding-top: 5px;
+    color: rgb(232, 234, 233);
+}
+.login-form span{
+    color:white;
+    display: block;
+    margin:5px 5px 5px 20px;
+}
+.login-form input{
+    width: 40vh;
+    padding: 3px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a2b2ee;
+    border: none;
+    border-bottom: 2px solid #5F7ADB;
+    color: rgb(232, 234, 233);
+}
+.close p{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+    color:rgb(232, 234, 233);
+    border: 1px solid #5F7ADB;
+    padding: 2px;
+}
+.show input{
+    width: 20px;
+    display: inline;
+    margin-left: 15px;
+    margin-top: 6px;
+}
+.show span{
+    display: inline;
+    font-size: 14px;
+    margin: 0;
 }
 @media only screen and (max-width: 600px) {
     .mobile-container{
