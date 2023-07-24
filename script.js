@@ -23,21 +23,26 @@ aboutSign.addEventListener('click',()=>{
 /*In the previous code, all elements inside 
 popupAbout div are disabled because the user has 
 possibility to highlight text */
- 
+
 let signButton = document.querySelector('.sign');
 signButton.addEventListener('click',(element)=>{
     let loginForm = document.querySelector('#login-form');
     loginForm.style.display = 'block';
 
-    //leave popup with keyboard
-    window.addEventListener('keydown',(element)=>{
-        if(element.key === 'Escape')
-        {
-            loginForm.style.display = 'none';
-        }
-    })
     let X = document.querySelector('.close');
     X.addEventListener('click',()=>{
         loginForm.style.display = 'none';
+    })
+})
+
+let registrationButton = document.querySelector('#registration');
+
+registrationButton.addEventListener('click',()=>{
+    let registrationForm = document.querySelector('.registration-container');
+    registrationForm.style.display = 'block';
+
+    let X = document.querySelector('#test');
+    X.addEventListener('click',()=>{
+        registrationForm.style.display = 'none';
     })
 })

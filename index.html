@@ -13,15 +13,15 @@
         </div>
         <div class="login-container">
             <button class="sign">Sign in</button>
-            <p class="register-sign">No account? Sign up</p>
+            <p class="register-sign" id="registration">No account? Sign up</p>
             <div class="login-form" id="login-form">
                 <div class="login-title">
                     <h2>Sign in</h2>
                 </div>
                 <span>Username</span>
-                <input type="text" name="username" id="name">
+                <input type="text" name="username" id="lname">
                 <span>Password</span>
-                <input type="text" name="password" id="password">
+                <input type="text" name="password" id="lpassword">
                 <div class="show">
                     <input type="checkbox" name="show" id="show">
                     <span>Show password</span>
@@ -30,6 +30,33 @@
                 <div class="close">
                     <p>X</p>
                 </div>
+            </div>
+            <div class="registration-container">
+                <form action="">
+                    <div class="registration-title">
+                        <h2>Sign up</h2>
+                    </div>
+                    <div class="registration">
+                        <label>Name</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="registration">
+                        <label>Surname</label>
+                        <input type="text" name="surname" id="surname">
+                    </div>
+                    <div class="registration">
+                        <label>Username</label>
+                        <input type="text" name="username" id="username" disabled>
+                    </div>
+                    <div class="registration">
+                        <label>Password</label>
+                        <input type="password" name="password" id="Password">
+                    </div>
+                    <button type="Submit" class="button">Sign up</button>
+                    <div class="close" id="test">
+                        <p>X</p>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="about-container">
@@ -42,5 +69,6 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="registration.js"></script>
 </body>
 </html>

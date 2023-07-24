@@ -131,6 +131,35 @@ body,html{
     font-size: 14px;
     margin: 0;
 }
+.registration-container{
+    width: 45vh;
+    height: 300px;
+    background-color: #a2b2ee;
+    color: white;
+    position: fixed;
+    top: 45vh;
+    display: none;
+}
+.registration label{
+    display: block;
+    margin:5px 5px 5px 20px;
+}
+.registration input{
+    width: 40vh;
+    padding: 3px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a2b2ee;
+    border: none;
+    border-bottom: 2px solid #5F7ADB;
+    color: rgb(232, 234, 233);
+}
+.registration-title{
+    text-align: center;
+    padding-top: 5px;
+}
+
 @media only screen and (max-width: 600px) {
     .mobile-container{
         width: 100%;
