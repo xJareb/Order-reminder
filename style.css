@@ -159,7 +159,10 @@ body,html{
     text-align: center;
     padding-top: 5px;
 }
-
+.error{
+    margin-left: 20px;
+    color:red;
+}
 @media only screen and (max-width: 600px) {
     .mobile-container{
         width: 100%;
