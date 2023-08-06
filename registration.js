@@ -7,17 +7,6 @@ const errorElement = (elementID,text) =>{
     parrent.appendChild(errorSign);
     errorSign.innerText = text;
 }
-//creating a list of error alerts for password
-const passwordElement = () => {
-    let errorList = document.createElement('ul');
-    errorList.classList = 'list';
-    let parrent = document.querySelector('#passwordinput');
-    parrent.appendChild(errorList);
-
-    let ul = document.querySelector('.list');
-    
-    console.log(ul);
-}
 window.addEventListener('input',(element)=>{
     //automatically creating a username
     let usernameInput = document.querySelector('#username');
@@ -25,7 +14,6 @@ window.addEventListener('input',(element)=>{
     let nameValue = document.querySelector('#name').value;
     let surnameValue = document.querySelector('#surname').value;
     let passwordValue = document.querySelector('#Password').value;
-    console.log(passwordValue);
 
     let targetInput = element.target;
     let targetInputName = targetInput.getAttribute('name');
@@ -38,9 +26,12 @@ window.addEventListener('input',(element)=>{
             usernameInput.value = (`${nameValue}.${surnameValue}`).toLocaleLowerCase();
             break;
     }
-    
-    // validation
+    if(nameValue === '' && surnameValue === '')
+    {
+        usernameInput.value = '';
+    }
 
+    // validation
     let errors = document.querySelectorAll('.error');
 
     const disableDuplication = ()=>{
@@ -55,11 +46,17 @@ window.addEventListener('input',(element)=>{
             errorElement(input,text)
             disableDuplication();
         }
-        else{
-            disableDuplication();
+
+    }
+    
+    const includeValidation = (element,input,regex) =>{
+        if(!regex.test(element))
+        {
+            let upperText = '•The field must contain an uppercase letter';
+            errorElement(input,upperText);
         }
     }
-
+    
     switch (targetInputName) {
         case "name":
             lengthValidation(nameValue,'#nameinput',3);
@@ -67,6 +64,6 @@ window.addEventListener('input',(element)=>{
             lengthValidation(surnameValue,'#surnameinput',3);
         case "password":
             lengthValidation(passwordValue,'#passwordinput',7);
+            includeValidation(passwordValue,'#passwordinput',/[A-Z]{1,}/);
     }
 })
-passwordElement();
