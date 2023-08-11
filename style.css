@@ -157,6 +157,10 @@ body,html{
     margin-left: 20px;
     color: #26292B;
 }
+.title h1 span {
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
 @media only screen and (max-width: 600px) {
     .mobile-container{
         width: 100%;

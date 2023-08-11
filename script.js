@@ -101,14 +101,31 @@ window.addEventListener('resize',()=>{
     centredParagraph();
 })
 
-// Responsive sign-up paragraph 
+// opacity animation with title
 
+let title = document.querySelector('.title h1');
+let letters = title.textContent.split('');
 
+title.innerHTML = '';
 
+for (let i = 0; i < letters.length; i++) {
+    title.innerHTML += `<span>${letters[i]}</span>`
+}
 
+let i = 0;
+let inerval = setInterval(() => {
+    let spans = document.querySelectorAll('.title h1 span');
+    let singleSpan = spans[i];
 
+    singleSpan.style.opacity = 1;
 
+    i++;
 
+    if(i === spans.length)
+    {
+        clearInterval(inerval)
+    }
+}, 300);
 
 
 
