@@ -161,6 +161,59 @@ body,html{
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
+.title-menu{
+    color: rgb(232, 234, 233);
+    padding-top: 12px;
+    margin-left: 15px;
+}
+.categories{
+    width: 100%;
+    height: 50px;
+    margin-top: 25px;
+}
+.boxes{
+    width: 80px;
+    height: 35px;
+    background-color: #5F7ADB;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #a2b2ee;
+    border-radius: 5%;
+}
+.boxes p{
+    margin-top: 8px;
+    color: rgb(232, 234, 233);
+}
+.control-boxes{
+    color: rgb(232, 234, 233);
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.search-container{
+    width: 10%;
+    height: 30px;
+    margin-top: 10px;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+}
+.search-image img{
+    max-width: 39px;
+    max-height: 29px;
+    margin-left: 5px;
+}
+.search-input input{
+    height: 90%;
+    font-size: 17px;
+    width: 250px;
+    margin-left: 15px;
+    color: rgb(232, 234, 233);
+    border: none;
+    border-bottom:2px solid #a2b2ee;
+    display: none;
+    background-color: #5F7ADB;
+
+}
 @media only screen and (max-width: 600px) {
     .mobile-container{
         width: 100%;
