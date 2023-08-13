@@ -12,6 +12,8 @@ body,html{
     background-color: black;
     margin-left: auto;
     margin-right: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .title h1{
     color: rgb(232, 234, 233);
@@ -171,14 +173,19 @@ body,html{
     height: 50px;
     margin-top: 25px;
 }
+.category-boxes{
+    margin-left: calc(50% - 185px);
+}
 .boxes{
-    width: 80px;
+    width: 90px;
     height: 35px;
     background-color: #5F7ADB;
     text-align: center;
     display: inline-block;
     border: 1px solid #a2b2ee;
     border-radius: 5%;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 .boxes p{
     margin-top: 8px;
@@ -195,7 +202,8 @@ body,html{
     height: 30px;
     margin-top: 10px;
     display: flex;
-    transition: all 0.5s ease-in-out;
+    margin-left: calc(50% - 175px);
+    
 }
 .search-image img{
     max-width: 39px;
@@ -205,14 +213,59 @@ body,html{
 .search-input input{
     height: 90%;
     font-size: 17px;
-    width: 250px;
+    width: 260px;
     margin-left: 15px;
     color: rgb(232, 234, 233);
     border: none;
     border-bottom:2px solid #a2b2ee;
-    display: none;
-    background-color: #5F7ADB;
-
+    opacity: 0;
+    background-color: black;
+    transition: all 0.5s ease-in-out;
+}
+.items{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #5F7ADB;
+    margin-top: 10px;
+}
+.items img{
+    width: 70px;
+    height: 70px;
+    background-color: aquamarine;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5px;
+}
+.item-informations{
+    text-align: center;
+    color: rgb(232, 234, 233);
+}
+.item-details{
+    display: flex;
+}
+.item-details p{
+    color: rgb(232, 234, 233);
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.item-details input{
+    width: 35px;
+    margin-left: 70px;
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid #5F7ADB;
+    color: rgb(232, 234, 233);
+}
+.menu-container{
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
 }
 @media only screen and (max-width: 600px) {
     .mobile-container{
