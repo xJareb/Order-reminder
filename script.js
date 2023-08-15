@@ -126,6 +126,3 @@ let inerval = setInterval(() => {
         clearInterval(inerval)
     }
 }, 300);
-
-
-

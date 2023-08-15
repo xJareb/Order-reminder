@@ -224,7 +224,7 @@ body,html{
 }
 .items{
     width: 150px;
-    height: 150px;
+    height: 170px;
     border: 1px solid #5F7ADB;
     margin-top: 10px;
 }
@@ -248,11 +248,11 @@ body,html{
     color: rgb(232, 234, 233);
     font-size: 22px;
     font-weight: bold;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 .item-details input{
     width: 35px;
-    margin-left: 70px;
+    margin-left: 60px;
     background-color: black;
     border: none;
     border-bottom: 1px solid #5F7ADB;
@@ -266,6 +266,31 @@ body,html{
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
+}
+.item-button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #5F7ADB;
+    color: white;
+    border: none;
+    border: 1px solid rgb(232, 234, 233);
+    width: 70px;
+    padding: 1px;
+    margin-top: 5px;
+}
+hr{
+    width: 95%;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1px;
+    background-color: rgb(232, 234, 233);
+    border-radius: 5%;
+}
+.cart-container{
+    color: rgb(232, 234, 233);
 }
 @media only screen and (max-width: 600px) {
     .mobile-container{

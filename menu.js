@@ -76,6 +76,7 @@ const getMenuItems = () =>{
                                 <p>$${x.Price}</p>
                                 <input type="number" min="0">
                             </div>
+                            <button class="item-button" onclick="getItems(this)">Add</button>
                         </div>`
                         }
                     });
@@ -88,3 +89,28 @@ const getMenuItems = () =>{
             );
 }
 getMenuItems();
+
+function getItems (element){
+    
+
+    let mainEl = element.closest('.items');
+    let titleItem = mainEl.querySelector('.item-informations h3');
+    let priceItem = mainEl.querySelector('.item-details p');
+    let quantityItem = mainEl.querySelector('.item-details input');
+
+    let qunatityNumber = parseInt(quantityItem.value);
+
+    if(!isNaN(qunatityNumber))
+    {
+        let itemTotal = priceItem.textContent.substring(1);
+        itemTotal = parseFloat(itemTotal) * quantityItem.value;
+
+        let orderContainer = document.querySelector('.order');
+        orderContainer.innerHTML += `<div class="desk-order"><h2>${titleItem.textContent}</h2> <p>${priceItem.textContent} X ${quantityItem.value} = $${itemTotal}</p> <button>Remove</button><div class="total"></div></div>`
+
+    }
+    else{
+        alert('Plese check qunatity of product')
+    }
+
+}
