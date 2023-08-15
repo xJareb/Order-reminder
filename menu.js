@@ -74,7 +74,7 @@ const getMenuItems = () =>{
                             </div>
                             <div class="item-details">
                                 <p>$${x.Price}</p>
-                                <input type="number" min="0">
+                                <input type="number" min="1">
                             </div>
                             <button class="item-button" onclick="getItems(this)">Add</button>
                         </div>`
@@ -106,8 +106,12 @@ function getItems (element){
         itemTotal = parseFloat(itemTotal) * quantityItem.value;
 
         let orderContainer = document.querySelector('.order');
-        orderContainer.innerHTML += `<div class="desk-order"><h2>${titleItem.textContent}</h2> <p>${priceItem.textContent} X ${quantityItem.value} = $${itemTotal}</p> <button>Remove</button><div class="total"></div></div>`
+        orderContainer.innerHTML += `<div class="desk-order"><p>${titleItem.textContent} - ${priceItem.textContent} X ${quantityItem.value} = $${itemTotal}</p> <button class="item-button" id="remove-button">Remove</button><div class="total"></div></div>`
 
+        quantityItem.value = '';
+
+        orderContainer.style.backgroundColor = '#5F7ADB';
+        orderContainer.style.opacity = 1;
     }
     else{
         alert('Plese check qunatity of product')
