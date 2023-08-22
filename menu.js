@@ -67,10 +67,10 @@ const getMenuItems = () =>{
                     r.json().then(obj => {
                         for (const x of obj) {
                             items.innerHTML +=` <div class="items">
-                            <img src="">
+                            <img src="${x.imageUrl}">
                             <div class="item-informations">
                                 <h3>${x.Title}</h3>
-                                <p>Category: ${x.Category}</p>
+                                <p>${x.Category}</p>
                             </div>
                             <div class="item-details">
                                 <p>$${x.Price}</p>
@@ -90,6 +90,9 @@ const getMenuItems = () =>{
 }
 getMenuItems();
 
+let tempDeskNumber;
+let sumOrder;
+
 function getItems (element){
     
 
@@ -100,21 +103,66 @@ function getItems (element){
 
     let qunatityNumber = parseInt(quantityItem.value);
 
+    let deskNumber = document.querySelector('.desk-container input').value;
+    deskNumber = parseInt(deskNumber);
+
+    if(!isNaN(deskNumber))
+    {
     if(!isNaN(qunatityNumber))
     {
         let itemTotal = priceItem.textContent.substring(1);
         itemTotal = parseFloat(itemTotal) * quantityItem.value;
 
+
         let orderContainer = document.querySelector('.order');
-        orderContainer.innerHTML += `<div class="desk-order"><p>${titleItem.textContent} - ${priceItem.textContent} X ${quantityItem.value} = $${itemTotal}</p> <button class="item-button" id="remove-button">Remove</button><div class="total"></div></div>`
-
+        if(deskNumber === tempDeskNumber){
+            let itemList = document.querySelector('.order-desk');
+            itemList.innerHTML += `<div class="desk-information">
+            <p>${titleItem.textContent} ${priceItem.textContent} x ${quantityItem.value} = $${itemTotal}</p>
+            <button class="item-button" id="remove-item" onclick="removeItem(this)">Remove</button>
+        </div>`
+        }
+        else{
+            orderContainer.innerHTML += `<div class="order-desk">
+            <div class="desk-title">
+                <h2>Desk ${deskNumber}</h2>
+            </div>
+            <div class="desk-information">
+                <p>${titleItem.textContent} ${priceItem.textContent} x ${quantityItem.value} = $${itemTotal}</p>
+                <button class="item-button" id="remove-item" onclick="removeItem(this)">Remove</button>
+            </div>
+        </div>`
+        }
+        
         quantityItem.value = '';
-
-        orderContainer.style.backgroundColor = '#5F7ADB';
         orderContainer.style.opacity = 1;
+        tempDeskNumber = deskNumber;
+        fontResponsive();
     }
     else{
         alert('Plese check qunatity of product')
     }
+}
+else{
+    alert('Please check number of the desk')
+}
+}
 
+// remove item from order
+function removeItem (item){
+
+    let orderThing = item.closest('.order-desk');
+    let itemDetail = orderThing.querySelector('.desk-information');
+    itemDetail.remove();
+}
+let fontResponsive = () =>{
+    // not text in new row
+    let itemDetail = document.querySelectorAll('.desk-information p');
+    for (let i = 0; i < itemDetail.length; i++) {
+        let height = itemDetail[i].offsetHeight;
+        if(height > 26)
+        {
+            itemDetail[i].style.fontSize = '16px'
+        }
+    }
 }
