@@ -165,8 +165,8 @@ body,html{
 }
 .title-menu{
     color: rgb(232, 234, 233);
-    padding-top: 12px;
-    margin-left: 15px;
+    text-align: center;
+    padding-top: 15px;
 }
 .categories{
     width: 100%;
@@ -174,7 +174,7 @@ body,html{
     margin-top: 25px;
 }
 .category-boxes{
-    margin-left: calc(50% - 185px)
+    margin-left: calc(50% - 178px)
 }
 .boxes{
     width: 90px;
@@ -184,8 +184,8 @@ body,html{
     display: inline-block;
     border: 1px solid #a2b2ee;
     border-radius: 5%;
-    margin-left: 3px;
-    margin-right: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .boxes p{
     margin-top: 8px;
@@ -276,16 +276,10 @@ body,html{
     width: 70px;
     padding: 1px;
     margin-top: 5px;
+    border-radius: 2px;
 }
 hr{
-    width: 95%;
     margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1px;
-    background-color: rgb(232, 234, 233);
-    border-radius: 5%;
     opacity: 0;
 }
 .cart-container{
@@ -294,17 +288,24 @@ hr{
 }
 .desk-title h2{
     text-align: center;
-    margin-top: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .desk-information{
     display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .desk-information p{
     font-size: 22px;
     margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    min-width: 200px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 70%;
+}
+.desk-information button{
+    padding: 2px;
+    width: 30%;
 }
 #remove-item{
     background-color: #a2b2ee;
@@ -343,13 +344,30 @@ hr{
 }
 .order-desk{
     margin-top: 10px;
-    background-color: #5F7ADB;
+    background-color: #5f7adbef;
+    border-radius: 5px;
 }
 .total-price p{
     text-align: right;
     font-size: 22px;
     margin-top: 10px;
     margin-right: 10px;
+}
+.desk-commands{
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.desk-commands p{
+    margin-left: 10px;
+    font-size: 22px;
+}
+.desk-commands span{
+    font-size: 22px;
+}
+#payButton{
+    width: 40%;
+    background-color: #a2b2ee;
 }
 @media only screen and (max-width: 600px) {
     .mobile-container{

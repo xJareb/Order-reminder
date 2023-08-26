@@ -90,12 +90,14 @@ const getMenuItems = () =>{
 }
 getMenuItems();
 
-let tempDeskNumber;
-let sumOrder;
+let emptyArray = [];
+let foundNumber = false;
+let sumTotal;
+
+/*This function do sorting ordered items into right position*/
 
 function getItems (element){
     
-
     let mainEl = element.closest('.items');
     let titleItem = mainEl.querySelector('.item-informations h3');
     let priceItem = mainEl.querySelector('.item-details p');
@@ -113,31 +115,59 @@ function getItems (element){
         let itemTotal = priceItem.textContent.substring(1);
         itemTotal = parseFloat(itemTotal) * quantityItem.value;
 
-
         let orderContainer = document.querySelector('.order');
-        if(deskNumber === tempDeskNumber){
-            let itemList = document.querySelector('.order-desk');
+
+        //Used for loop to find a desk number stored in array
+        for (let i = 0; i < emptyArray.length; i++) {
+            if(deskNumber == emptyArray[i])
+            {
+                foundNumber = true;
+                break;
+            }
+            else{
+                foundNumber = false;
+            }
+        }
+        //if desk number is found in array locate an ordered item into container which title contains desk number
+        //else create new container with title and desk number
+        if(foundNumber){
+            let itemList = document.getElementById(`${deskNumber.toString()}`);
             itemList.innerHTML += `<div class="desk-information">
             <p>${titleItem.textContent} ${priceItem.textContent} x ${quantityItem.value} = $${itemTotal}</p>
-            <button class="item-button" id="remove-item" onclick="removeItem(this)">Remove</button>
+            <button class="item-button" id="remove-item" onclick="removeItem(this,${deskNumber.toString()})">Remove</button>
         </div>`
+        //need to fix to work perefctly
+        let span = document.getElementById(`s${deskNumber}`);
+        console.log(span.textContent);
+        sumTotal += itemTotal;
+        console.log('Suma:' + sumTotal);
+        console.log('Item sum:' + itemTotal);
+        span.innerHTML = `${sumTotal}`
         }
         else{
-            orderContainer.innerHTML += `<div class="order-desk">
+            emptyArray.push(deskNumber);
+            sumTotal = itemTotal;
+            console.log('Suma:' + sumTotal);
+            console.log('Item sum:' + itemTotal);
+            orderContainer.innerHTML += `<div class="order-desk" id="${deskNumber.toString()}">
             <div class="desk-title">
                 <h2>Desk ${deskNumber}</h2>
             </div>
+            <div class="desk-commands">
+            <p>Total: $</p><span id="s${deskNumber.toString()}">${sumTotal}</span>
+            <button class="item-button" id="payButton" onclick="payOrder(${deskNumber})">Pay order</button>
+            </div>
+            <hr>
             <div class="desk-information">
                 <p>${titleItem.textContent} ${priceItem.textContent} x ${quantityItem.value} = $${itemTotal}</p>
-                <button class="item-button" id="remove-item" onclick="removeItem(this)">Remove</button>
+                <button class="item-button" id="remove-item" onclick="removeItem(this,${deskNumber.toString()})">Remove</button>
             </div>
         </div>`
         }
-        
         quantityItem.value = '';
         orderContainer.style.opacity = 1;
-        tempDeskNumber = deskNumber;
-        fontResponsive();
+        //fontResponsive();
+
     }
     else{
         alert('Plese check qunatity of product')
@@ -149,11 +179,27 @@ else{
 }
 
 // remove item from order
-function removeItem (item){
+function removeItem (item,deskNumber){
 
     let orderThing = item.closest('.order-desk');
     let itemDetail = orderThing.querySelector('.desk-information');
+    let tempItemDetail = orderThing.querySelectorAll('.desk-information');
+
     itemDetail.remove();
+
+    let orderDesk = document.getElementById(deskNumber);
+
+    if(tempItemDetail.length === 1)
+    {
+        for (let i = 0; i < emptyArray.length; i++) {
+            if(deskNumber === emptyArray[i])
+            {
+                delete emptyArray[i];
+                emptyArray.length = emptyArray.length - 1;
+            }
+        }
+       orderDesk.remove();
+    }
 }
 let fontResponsive = () =>{
     // not text in new row
@@ -166,3 +212,16 @@ let fontResponsive = () =>{
         }
     }
 }
+function payOrder(deskNumber) {
+    let orderDesk = document.getElementById(deskNumber);
+    orderDesk.remove();
+    for (let i = 0; i < emptyArray.length; i++) {
+        if(deskNumber === emptyArray[i])
+        {
+            delete emptyArray[i];
+            emptyArray.length = emptyArray.length - 1;
+        }
+    }
+}
+
+// responsive centering elements 
