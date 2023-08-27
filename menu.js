@@ -166,8 +166,6 @@ function getItems (element){
         }
         quantityItem.value = '';
         orderContainer.style.opacity = 1;
-        //fontResponsive();
-
     }
     else{
         alert('Plese check qunatity of product')
@@ -200,17 +198,8 @@ function removeItem (item,deskNumber){
         }
        orderDesk.remove();
     }
-}
-let fontResponsive = () =>{
-    // not text in new row
-    let itemDetail = document.querySelectorAll('.desk-information p');
-    for (let i = 0; i < itemDetail.length; i++) {
-        let height = itemDetail[i].offsetHeight;
-        if(height > 26)
-        {
-            itemDetail[i].style.fontSize = '16px'
-        }
-    }
+    // need to implement reducing a total sum
+
 }
 function payOrder(deskNumber) {
     let orderDesk = document.getElementById(deskNumber);
@@ -224,4 +213,8 @@ function payOrder(deskNumber) {
     }
 }
 
-// responsive centering elements 
+// disabling duplicates
+
+let disableDuplicates = () =>{
+    // need to implement
+}
