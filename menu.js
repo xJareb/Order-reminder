@@ -96,6 +96,8 @@ let sumTotal;
 
 /*This function do sorting ordered items into right position*/
 
+let publicItemName;
+
 function getItems (element){
     
     let mainEl = element.closest('.items');
@@ -107,6 +109,8 @@ function getItems (element){
 
     let deskNumber = document.querySelector('.desk-container input').value;
     deskNumber = parseInt(deskNumber);
+
+    publicItemName = titleItem;
 
     if(!isNaN(deskNumber))
     {
@@ -132,23 +136,28 @@ function getItems (element){
         //else create new container with title and desk number
         if(foundNumber){
             let itemList = document.getElementById(`${deskNumber.toString()}`);
+            //test
+            disableDuplicates(deskNumber);
+            if(notDuplicated)
+            {
             itemList.innerHTML += `<div class="desk-information">
             <p>${titleItem.textContent} ${priceItem.textContent} x ${quantityItem.value} = $${itemTotal}</p>
             <button class="item-button" id="remove-item" onclick="removeItem(this,${deskNumber.toString()})">Remove</button>
-        </div>`
-        //need to fix to work perefctly
-        let span = document.getElementById(`s${deskNumber}`);
-        console.log(span.textContent);
-        sumTotal += itemTotal;
-        console.log('Suma:' + sumTotal);
-        console.log('Item sum:' + itemTotal);
-        span.innerHTML = `${sumTotal}`
+            </div>`
+            //need to fix to work perefctly
+            let span = document.getElementById(`s${deskNumber}`);
+            //console.log(span.textContent);
+            sumTotal += itemTotal;
+            //console.log('Suma:' + sumTotal);
+            //console.log('Item sum:' + itemTotal);
+            span.innerHTML = `${sumTotal}`
+            }
         }
         else{
             emptyArray.push(deskNumber);
             sumTotal = itemTotal;
-            console.log('Suma:' + sumTotal);
-            console.log('Item sum:' + itemTotal);
+            //console.log('Suma:' + sumTotal);
+            //console.log('Item sum:' + itemTotal);
             orderContainer.innerHTML += `<div class="order-desk" id="${deskNumber.toString()}">
             <div class="desk-title">
                 <h2>Desk ${deskNumber}</h2>
@@ -213,8 +222,29 @@ function payOrder(deskNumber) {
     }
 }
 
-// disabling duplicates
+// disable duplicates
+let notDuplicated = true;
 
-let disableDuplicates = () =>{
+let disableDuplicates = (deskNumber) =>{
     // need to implement
+    let body = document.getElementById(deskNumber);
+    let items = body.querySelectorAll('.desk-information p');
+
+    let privateItemName = publicItemName.textContent;
+
+    for (const item of items) {
+        let endName = item.textContent.indexOf('$');
+        let itemName = item.textContent.substring(0,endName - 1);
+
+        if(privateItemName === itemName)
+        {
+            alert('Dodan isti proizvod')
+            notDuplicated = false;
+            break;
+        }
+        else
+        {
+            notDuplicated = true;
+        }
+    }
 }
