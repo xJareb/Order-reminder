@@ -1,13 +1,5 @@
-//universal function for creating error alert
-const errorElement = (elementID,text) =>{
-
-    let errorSign = document.createElement('div');
-    errorSign.classList = 'error';
-    let parrent = document.querySelector(`${elementID}`);
-    parrent.appendChild(errorSign);
-    errorSign.innerText = text;
-}
 let signUp = document.querySelector('.registration-container');
+
 let rName = document.querySelector('#name');
 let rSurname = document.querySelector('#surname');
 let rUsername = document.querySelector('#username')
@@ -21,3 +13,14 @@ signUp.addEventListener('input',()=>{
         rUsername.value = '';
     }
 })
+
+//list of errors that can be possible while registration
+let errorList = {
+    require : "This field is required",
+    length: "This field must be longer than four characters",
+    notNumber: "This field cannot contain numbers",
+    notSpace: "This field cannot contain space",
+    lengthpw: "This field must be longer than seven characters",
+    uppercase: "This field must contain an uppercase letter",
+    number : "This field must contain a number"
+}

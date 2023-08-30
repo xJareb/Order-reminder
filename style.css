@@ -155,9 +155,13 @@ body,html{
     text-align: center;
     padding-top: 5px;
 }
-.error{
-    margin-left: 20px;
-    color: #26292B;
+.registration ul{
+    color: black;
+    margin-left: 35px;
+}
+.registration ul li{
+    margin-top: 3px;
+    font-size: 17px;
 }
 .title h1 span {
     opacity: 0;

@@ -136,6 +136,10 @@ function getItems (element){
         //else create new container with title and desk number
         if(foundNumber){
             let itemList = document.getElementById(`${deskNumber.toString()}`);
+            let span = document.getElementById(`s${deskNumber}`);
+            let tempSum = parseFloat(span.innerText);
+            tempSum += itemTotal;
+            span.innerText = tempSum;
             //test
             disableDuplicates(deskNumber);
             if(notDuplicated)
@@ -145,12 +149,6 @@ function getItems (element){
             <button class="item-button" id="remove-item" onclick="removeItem(this,${deskNumber.toString()})">Remove</button>
             </div>`
             //need to fix to work perefctly
-            let span = document.getElementById(`s${deskNumber}`);
-            //console.log(span.textContent);
-            sumTotal += itemTotal;
-            //console.log('Suma:' + sumTotal);
-            //console.log('Item sum:' + itemTotal);
-            span.innerHTML = `${sumTotal}`
             }
         }
         else{
@@ -208,7 +206,21 @@ function removeItem (item,deskNumber){
        orderDesk.remove();
     }
     // need to implement reducing a total sum
+    
+    let itemInfo = item.closest('.desk-information');
+    let pItemInfo = itemInfo.querySelector('p');
 
+    //take out price from the p element
+    let position = pItemInfo.innerText.indexOf('=');
+    let price = parseFloat(pItemInfo.innerText.substring(position + 3));
+
+    //take span
+    let span = orderThing.querySelector('.desk-commands span');
+    let spanPrice = parseFloat(span.innerText);
+    
+    spanPrice -= price;
+    span.innerText = spanPrice;
+    
 }
 function payOrder(deskNumber) {
     let orderDesk = document.getElementById(deskNumber);
