@@ -32,12 +32,14 @@ body,html{
     border: 1px solid #a2b2ee;
     margin-top: 25vh;
     border-radius: 5%;
+    cursor: pointer;
 }
 .register-sign{
     color: #5F7ADB;
     text-decoration: underline;
     text-align: center;
     margin-top: 15px;
+    cursor: pointer;
 }
 .about-sign{
     color: #5F7ADB;
@@ -45,6 +47,7 @@ body,html{
     bottom: 0;
     margin-left: calc(25vh - 29px);
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .popUp-about{
@@ -75,6 +78,7 @@ body,html{
     background-color: #5F7ADB;
     border: 1px solid rgb(232, 234, 233);
     color: rgb(232, 234, 233);
+    cursor: pointer;
 }
 .login-form{
     width: 45vh;
@@ -190,6 +194,7 @@ body,html{
     border-radius: 5%;
     margin-left: 2px;
     margin-right: 2px;
+    cursor: pointer;
 }
 .boxes p{
     margin-top: 8px;

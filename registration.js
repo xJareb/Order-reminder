@@ -14,13 +14,62 @@ signUp.addEventListener('input',()=>{
     }
 })
 
-//list of errors that can be possible while registration
-let errorList = {
-    require : "This field is required",
-    length: "This field must be longer than four characters",
-    notNumber: "This field cannot contain numbers",
-    notSpace: "This field cannot contain space",
-    lengthpw: "This field must be longer than seven characters",
-    uppercase: "This field must contain an uppercase letter",
-    number : "This field must contain a number"
+//validation
+
+let inputs = document.querySelectorAll('.registration input');
+
+let errors = {
+    "name" : [],
+    "surname":[],
+    "password":[]
+}
+
+inputs.forEach(element => {
+    element.addEventListener('change', e =>{
+        let currentInput = e.target;
+        let inputValue = currentInput.value;
+        let inputName = currentInput.getAttribute('name');
+        
+        if(inputValue.length > 4){
+            errors[inputName] = [];
+            switch (inputName) {
+                case "name":
+                    let regex = /[0-9]/
+                    let validation = inputValue.trim();
+                    if(validation.match(regex))
+                    {
+                        errors[inputName].push('This field cannot contain number');
+                    }
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+        else{
+            errors[inputName] = ['This field must contain more than three character']
+        }
+        populateErrors();
+    })
+});
+
+const populateErrors = () =>{
+
+    for (const element of document.querySelectorAll('ul')) {
+        element.remove();
+    }
+
+    for (const key of Object.keys(errors)) {
+        let input = document.querySelector(`input[name="${key}"]`);
+        let parentElement = input.parentElement;
+        let errorsElement = document.createElement('ul');
+        parentElement.appendChild(errorsElement);
+
+        errors[key].forEach(error => {
+            let li = document.createElement('li');
+            li.innerText = error;
+
+            errorsElement.appendChild(li);
+        });
+    }
 }
