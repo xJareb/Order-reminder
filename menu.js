@@ -260,3 +260,24 @@ let disableDuplicates = (deskNumber) =>{
         }
     }
 }
+//test
+let test = (element) =>{
+    boxes.forEach(y=>{
+        y.style.backgroundColor = '#5F7ADB';
+    })
+    element.style.backgroundColor = 'red';
+    let titleBox = element.querySelector('p').textContent;
+    nextArrow.addEventListener('click',e=>{
+        boxes.forEach(x =>{
+            x.style.backgroundColor = '#5F7ADB';
+            if(x.style.display !== 'none'){
+                //console.log(x);
+                let title = x.querySelector('.boxes p').textContent;
+                if(titleBox === title){
+                    x.style.backgroundColor = 'red';
+                }
+                //console.log(title);
+            }
+        })
+    })
+}

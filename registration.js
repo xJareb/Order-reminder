@@ -13,7 +13,6 @@ signUp.addEventListener('input',()=>{
         rUsername.value = '';
     }
 })
-
 //validation
 
 let inputs = document.querySelectorAll('.registration input');
@@ -55,6 +54,7 @@ inputs.forEach(element => {
                     break;
                 case "surname":
                     notNumberValidation();
+                    notSpaceValidation();
                     break;
                 default:
                     break;
@@ -83,7 +83,7 @@ inputs.forEach(element => {
             }
         }
         populateErrors();
-        checkErrors();
+        
     })
 });
 
