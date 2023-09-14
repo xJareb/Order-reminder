@@ -29,27 +29,61 @@ inputs.forEach(element => {
         let currentInput = e.target;
         let inputValue = currentInput.value;
         let inputName = currentInput.getAttribute('name');
-        
+
+        let notNumberValidation = () =>{
+            let regex = /[0-9]/
+            let validation = inputValue.trim();
+            if(validation.match(regex))
+            {
+                errors[inputName].push('This field cannot contain number');
+            }
+        }
+        let notSpaceValidation = () =>{
+            let space = /[ ]/;
+            if(inputValue.match(space)){
+                errors[inputName].push('This field cannot contain space');
+            }
+        }
+        if(inputName !== 'password'){
         if(inputValue.length > 4){
             errors[inputName] = [];
+            
             switch (inputName) {
                 case "name":
-                    let regex = /[0-9]/
-                    let validation = inputValue.trim();
-                    if(validation.match(regex))
-                    {
-                        errors[inputName].push('This field cannot contain number');
-                    }
+                    notNumberValidation();
+                    notSpaceValidation();
                     break;
-            
+                case "surname":
+                    notNumberValidation();
+                    break;
                 default:
                     break;
             }
         }
         else{
             errors[inputName] = ['This field must contain more than three character']
+        }}
+        else{
+            if(inputValue.length > 7)
+            {
+                errors[inputName] = [];
+                let uppercaseLetter = /[A-Z]/;
+                if(!inputValue.match(uppercaseLetter)){
+                    errors[inputName].push('This field must contain an uppercase letter')
+                }
+                let number = /[0-9]/;
+                if(!inputValue.match(number))
+                {
+                    errors[inputName].push('This field must contain a number')
+                }
+                notSpaceValidation();
+            }
+            else{
+                errors[inputName] = ['This field must contain more than seven character']
+            }
         }
         populateErrors();
+        checkErrors();
     })
 });
 
