@@ -107,3 +107,58 @@ const populateErrors = () =>{
         });
     }
 }
+
+//responsive registration form
+
+//Part of the code used to take out the height of the registration div
+signUp.style.display = 'block';
+let registrationHeight = signUp.offsetHeight;
+console.log(registrationHeight);
+signUp.style.display = 'none';
+
+let tempErrorLocal;
+
+//current number of errors
+inputs.forEach(element => {
+    element.addEventListener('click',(e)=>{
+        let numError = e.target.parentElement.querySelectorAll('li');
+        tempErrorLocal = numError.length;
+    })
+});
+
+let tempErrorList = 0;
+let tempErrorName = "";
+
+inputs.forEach(element => {
+    element.addEventListener('change',(e)=>{
+        let parentElement = e.target.parentElement;
+        let errorList = parentElement.querySelectorAll('li');
+        let errorListLength = errorList.length;
+
+        let elementName = e.target.getAttribute('name');
+
+        if(errorListLength > 0){
+            if(tempErrorName !== ""){
+                if(elementName !== tempErrorName){
+                    
+                   tempErrorList = tempErrorLocal;
+                }
+            }
+            //used two variables to create an "event" changing the height
+            if(errorListLength > tempErrorList)
+            {
+                registrationHeight += 22;
+            }
+            else{
+                registrationHeight -= 22;
+            }
+            signUp.style.height = registrationHeight + "px";
+            tempErrorList = errorListLength;
+            tempErrorName = elementName;
+        }
+        else{
+            registrationHeight -= 22;
+            signUp.style.height = registrationHeight + "px";
+        }
+    })
+});
