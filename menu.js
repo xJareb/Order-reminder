@@ -140,7 +140,6 @@ function getItems (element){
             let tempSum = parseFloat(span.innerText);
             tempSum += itemTotal;
             span.innerText = tempSum;
-            //test
             disableDuplicates(deskNumber);
             if(notDuplicated)
             {
@@ -148,14 +147,11 @@ function getItems (element){
             <p>${titleItem.textContent} ${priceItem.textContent} x ${quantityItem.value} = $${itemTotal}</p>
             <button class="item-button" id="remove-item" onclick="removeItem(this,${deskNumber.toString()})">Remove</button>
             </div>`
-            //need to fix to work perefctly
             }
         }
         else{
             emptyArray.push(deskNumber);
             sumTotal = itemTotal;
-            //console.log('Suma:' + sumTotal);
-            //console.log('Item sum:' + itemTotal);
             orderContainer.innerHTML += `<div class="order-desk" id="${deskNumber.toString()}">
             <div class="desk-title">
                 <h2>Desk ${deskNumber}</h2>
@@ -260,23 +256,31 @@ let disableDuplicates = (deskNumber) =>{
         }
     }
 }
-//test
 let test = (element) =>{
     boxes.forEach(y=>{
         y.style.backgroundColor = '#5F7ADB';
     })
-    element.style.backgroundColor = 'red';
+    element.style.backgroundColor = '#a2b2ee';
     let titleBox = element.querySelector('p').textContent;
     nextArrow.addEventListener('click',e=>{
         boxes.forEach(x =>{
             x.style.backgroundColor = '#5F7ADB';
             if(x.style.display !== 'none'){
-                //console.log(x);
                 let title = x.querySelector('.boxes p').textContent;
                 if(titleBox === title){
-                    x.style.backgroundColor = 'red';
+                    x.style.backgroundColor = '#a2b2ee';
                 }
-                //console.log(title);
+            }
+        })
+    })
+    previousArrow.addEventListener('click',e=>{
+        boxes.forEach(x=>{
+            x.style.backgroundColor = '#5F7ADB';
+            if(x.style.display !== 'none'){
+                let title = x.querySelector('.boxes p').textContent;
+                if(titleBox === title){
+                    x.style.backgroundColor = '#a2b2ee';
+                }
             }
         })
     })

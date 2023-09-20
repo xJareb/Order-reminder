@@ -205,6 +205,10 @@ body,html{
     display: inline-block;
     margin-right: 5px;
     margin-left: 5px;
+    cursor: pointer;
+}
+.control-boxes:hover{
+    opacity: 60%;
 }
 .search-container{
     width: 10%;
@@ -230,6 +234,7 @@ body,html{
     opacity: 0;
     background-color: black;
     transition: all 0.5s ease-in-out;
+    text-align: center;
 }
 .items{
     width: 150px;
@@ -264,6 +269,7 @@ body,html{
     border: none;
     border-bottom: 1px solid #5F7ADB;
     color: rgb(232, 234, 233);
+    text-align: center;
 }
 .menu-container{
     display: flex;
@@ -390,5 +396,15 @@ hr{
     }
     .order{
         width: 80%;
+    }
+    .item-details input{
+        padding: 5px;
+    }
+    .items img{
+        width: 75px;
+        height: 75px;
+    }
+    .item-button{
+        margin-top: 10px;
     }
   }
