@@ -7,7 +7,7 @@ let rUsername = document.querySelector('#username')
 signUp.addEventListener('input',()=>{
     //automatically creating username
     if(rName.value !== '' || rSurname.value !== ''){
-        rUsername.value = rName.value.toString() + '.' + rSurname.value.toString(); 
+        rUsername.value = (rName.value.toString() + '.' + rSurname.value.toString()).toLowerCase(); 
     }
     else if(rName.value === '' && rSurname.value === ''){
         rUsername.value = '';
@@ -157,8 +157,62 @@ inputs.forEach(element => {
             tempErrorName = elementName;
         }
         else{
-            registrationHeight -= 22;
-            signUp.style.height = registrationHeight + "px";
+            //registrationHeight -= 22;
+            //signUp.style.height = registrationHeight + "px";
         }
     })
 });
+
+//populating registration data to API
+ 
+let regbtn = signUp.querySelector('form button');
+
+regbtn.addEventListener('click',()=>{
+    let bodyInputs = document.querySelectorAll('.registration');
+    let countErrors = 0;
+    let countEmptyInputs = 4;
+    bodyInputs.forEach(element => {
+        let errors = element.querySelectorAll('ul li');
+        let inputs = element.querySelector('input').value;
+        //check how many fields are not empty
+        if(inputs !== ""){
+            countEmptyInputs--;
+        }
+        if(errors.length === 0){
+            countErrors++;
+        }
+    });
+    //disable populating data to API with errors or empty fields
+    if(countErrors === 4 && countEmptyInputs === 0){
+        
+            let newObj = {
+                name: document.querySelector('#name').value,
+                surname: document.querySelector('#surname').value,
+                password: document.querySelector('#Password').value,
+                username: document.querySelector('#username').value
+            }
+            //console.log(data);
+
+            let strJson = JSON.stringify(newObj);
+
+            fetch("https://64d8d8bf5f9bf5b879ce9e35.mockapi.io/users", {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+            body: strJson,
+        })
+            .then((r) => {
+
+                r.json().then(x => {
+                    window.location.href = "menu.html";
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+        else{
+            alert('Please check your fields. You might have left some of the areas empty or made the wrong input')
+        }
+})
