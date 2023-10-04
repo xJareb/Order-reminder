@@ -57,17 +57,46 @@ checkBox.addEventListener('click',()=>{
     }
 })
 
-// hardcoding opening menu, later I will do sign up implementation
+/* log in to application using API -> getting all objects and find 
+   which object contains the current username and password*/
 
 let username = document.querySelector('#lname');
 let sign = document.querySelector('#sign-in');
-sign.addEventListener('click',()=>{
-    if(username.value === 'admin' && password.value === 'admin'){
-       var menu = 'menu.html';
-       window.location.href = menu;
-    }
-})
 
+let pomocnaVarijabla = 0;
+
+sign.addEventListener('click',()=>{
+    
+    let userValue = username.value;
+    let passwordValue = password.value;
+
+    var url = "https://64d8d8bf5f9bf5b879ce9e35.mockapi.io/users";
+        
+        fetch(url)
+            .then((r) => {
+                if (r.status != 200) {
+
+                    return;
+                }
+                r.json().then((x) => {
+                    pomocnaVarijabla = 0;
+                    x.forEach(element => {
+                        if(userValue === element.username && passwordValue === element.password){
+                            pomocnaVarijabla = 1;
+                        }
+                    });
+                    if(pomocnaVarijabla === 1){
+                        window.location.href = "menu.html";
+                    }
+                    else{
+                        alert('Please check your email and password')
+                    }
+                });
+            })
+            .catch((error) => {
+            });
+ 
+})
 //---------------------------------------------------------------------
 /*This code describe responsive centering paragraphs*/
 const moveLeft = (element,elementClass) =>{
