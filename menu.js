@@ -256,7 +256,10 @@ let disableDuplicates = (deskNumber) =>{
         }
     }
 }
-let test = (element) =>{
+
+let dataBody = document.querySelector('.menu-container');
+
+let filteringData = (element) =>{
     boxes.forEach(y=>{
         y.style.backgroundColor = '#5F7ADB';
     })
@@ -284,4 +287,89 @@ let test = (element) =>{
             }
         })
     })
+    
+    //filtering data
+    
+    dataBody.innerHTML = '';
+
+    let url = 'https://64d8d8bf5f9bf5b879ce9e35.mockapi.io/Menu';
+    fetch(url)
+        .then(
+            r => {
+                if (r.status !== 200) {
+                    alert("Server javlja grešku: " + r.status);
+                    return;
+                }
+                r.json().then(obj => {
+                    for (const x of obj) {
+                        if(titleBox === x.Category){
+                            dataBody.innerHTML += `<div class="items">
+                            <img src="${x.imageUrl}">
+                            <div class="item-informations">
+                                <h3>${x.Title}</h3>
+                                <p>${x.Category}</p>
+                            </div>
+                            <div class="item-details">
+                                <p>$${x.Price}</p>
+                                <input type="number" min="1">
+                            </div>
+                            <button class="item-button" onclick="getItems(this)">Add</button>
+                        </div>`
+                        }
+                    }
+                });
+            }
+        )
+        .catch(
+            err => {
+                alert("Error: " + err);
+            }
+        );
+        if(titleBox === 'All'){
+            getMenuItems();
+        } 
 }
+
+// search filtering data
+
+let searchBar = document.querySelector('.search-input input');
+//console.log(searchBar);
+searchBar.addEventListener('change',()=>{
+    let searchValue = searchBar.value;
+
+    dataBody.innerHTML = '';
+    
+    let url = 'https://64d8d8bf5f9bf5b879ce9e35.mockapi.io/Menu';
+    fetch(url)
+        .then(
+            r => {
+                if (r.status !== 200) {
+                    alert("Server javlja grešku: " + r.status);
+                    return;
+                }
+                r.json().then(obj => {
+                    for (const x of obj) {
+                        if(x.Title.toLowerCase().match(searchValue.toLowerCase())){
+                            dataBody.innerHTML += `<div class="items">
+                            <img src="${x.imageUrl}">
+                            <div class="item-informations">
+                                <h3>${x.Title}</h3>
+                                <p>${x.Category}</p>
+                            </div>
+                            <div class="item-details">
+                                <p>$${x.Price}</p>
+                                <input type="number" min="1">
+                            </div>
+                            <button class="item-button" onclick="getItems(this)">Add</button>
+                        </div>`
+                        }
+                    }
+                });
+            }
+        )
+        .catch(
+            err => {
+                alert("Error: " + err);
+            }
+        );
+})
