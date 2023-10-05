@@ -63,7 +63,7 @@ checkBox.addEventListener('click',()=>{
 let username = document.querySelector('#lname');
 let sign = document.querySelector('#sign-in');
 
-let pomocnaVarijabla = 0;
+let matchingData = 0;
 
 sign.addEventListener('click',()=>{
     
@@ -79,13 +79,13 @@ sign.addEventListener('click',()=>{
                     return;
                 }
                 r.json().then((x) => {
-                    pomocnaVarijabla = 0;
+                    matchingData = 0;
                     x.forEach(element => {
                         if(userValue === element.username && passwordValue === element.password){
-                            pomocnaVarijabla = 1;
+                            matchingData = 1;
                         }
                     });
-                    if(pomocnaVarijabla === 1){
+                    if(matchingData === 1){
                         window.location.href = "menu.html";
                     }
                     else{
