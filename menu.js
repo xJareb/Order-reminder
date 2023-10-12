@@ -148,6 +148,10 @@ function getItems (element){
             <button class="item-button" id="remove-item" onclick="removeItem(this,${deskNumber.toString()})">Remove</button>
             </div>`
             }
+            else{
+                tempSum -= itemTotal;
+                span.innerText = tempSum;
+            }
         }
         else{
             emptyArray.push(deskNumber);
@@ -246,7 +250,7 @@ let disableDuplicates = (deskNumber) =>{
 
         if(privateItemName === itemName)
         {
-            alert('Dodan isti proizvod')
+            alert('This product has already been added');
             notDuplicated = false;
             break;
         }
