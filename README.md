@@ -24,4 +24,4 @@ Live preview link: SOON
 
 # App-screenshots
 
-
+![Welcome page](https://github.com/xJareb/Order-reminder/assets/110131840/f88bdaf0-02da-47d8-94db-1aa1fe9b4c2c)
