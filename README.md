@@ -25,3 +25,11 @@ Live preview link: SOON
 # App-screenshots
 
 ## Welcome
+
+![Welcome page](https://github.com/xJareb/Order-reminder/assets/110131840/79c9b2d7-807e-400e-b05d-1cae970b6c72)
+
+## Products
+
+![Products](https://github.com/xJareb/Order-reminder/assets/110131840/1ad23cf7-01c6-4402-acc0-808ee32418e6)
+
+
