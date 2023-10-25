@@ -4,7 +4,7 @@ writing the order in notes, he/she can with a few clicks remember the order and 
 
 Owner of the project: Admir Jareb [admir.jareb@edu.fit.ba]
 
-Live preview link: SOON
+Live preview link: (https://xjareb.github.io/Order-reminder/)
 
 # Functionality
 
